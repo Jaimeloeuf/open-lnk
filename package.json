@@ -1,0 +1,66 @@
+{
+  "name": "open-lnk",
+  "displayName": "Open .lnk shortcuts",
+  "description": "Open the source file of .lnk files",
+  "author": "JJ",
+  "publisher": "EnkelDigital",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Enkel-Digital/open-lnk.git"
+  },
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.52.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "workspaceContains:**/**.lnk",
+    "onCommand:open-lnk.open"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "open-lnk.open",
+        "title": "Open source file of current .lnk file"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "publish": "git stash --include-untracked && vsce publish && git stash apply",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.52.0",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
+    "eslint": "^7.15.0",
+    "typescript": "^4.1.2",
+    "vscode-test": "^1.4.1"
+  },
+  "dependencies": {
+    "windows-shortcuts-ps": "^1.0.1"
+  },
+  "icon": "icon.png",
+  "galleryBanner": {
+    "theme": "light",
+    "color": "#ffa600"
+  },
+  "keywords": [
+    "windows",
+    "shortcuts",
+    "lnk",
+    "file"
+  ]
+}
